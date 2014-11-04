@@ -19,7 +19,9 @@ my %expected = (
 
 my $got = machine_epsilon();
 diag("Machine epsilon is $got");
-ok(grep {$_ eq $got} values %expected, 'machine_epsilon()');
+isnt($got, 1, "Didn't get 1");
+cmp_ok($got, '>', '0', "got greater than 0");
+ok(1 + $got/2 == 1, "Min epsilon");
 
 done_testing();
 
