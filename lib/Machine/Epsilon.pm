@@ -43,7 +43,7 @@ sub machine_epsilon {
     my $ma_64bit_52mantissa = 1.0 / ( 2**52 );
 
     # Machine accuracy for 128-bit floating point number (e.g. IBM AIX)
-    my $ma_128bit_105mantissa = 1.0 / ( 2**105 );
+    my $ma_128bit_105mantissa = 1.0 / ( 2**112 );
 
     # Always start with a power of 2 to avoid roundoff errors!!
     my $e = 1.0;
