@@ -3,6 +3,7 @@ use strict; use warnings;
 
 use lib 'lib';
 use Test::More;
+use Config;
 
 use_ok('Machine::Epsilon');
 
@@ -17,7 +18,7 @@ my %expected = (
 
 
 my $got = machine_epsilon();
-is ($got, $expected{length(pack('d', 1.001))}, 'machine_epsilon()');
+is ($got, $expected{$Config{nvsize}}, 'machine_epsilon()');
 
 done_testing();
 
