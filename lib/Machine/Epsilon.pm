@@ -34,7 +34,11 @@ Returns the rounding error for the machine.
 
 =cut
 
+my $epsilon;
+
 sub machine_epsilon {
+
+    return $epsilon if $epsilon;
 
     # Machine accuracy for 32-bit floating point number
     my $ma_32bit_23mantissa = 1.0 / ( 2**23 );
@@ -69,6 +73,8 @@ sub machine_epsilon {
           . "Setting to minimum accuracy of $ma_32bit_23mantissa.";
         return $ma_32bit_23mantissa;
     }
+
+    $epsilon = $e;
 
     return $e;
 }
