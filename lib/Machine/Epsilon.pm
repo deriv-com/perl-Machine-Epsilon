@@ -26,6 +26,14 @@ Version 1.00
 
 =cut
 
+=head1 FUNCTIONS
+
+=head2 machine_epsilon
+
+Returns the rounding error for the machine.
+
+=cut
+
 sub machine_epsilon {
 
     # Machine accuracy for 32-bit floating point number

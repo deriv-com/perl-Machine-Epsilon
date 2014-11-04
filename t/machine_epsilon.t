@@ -8,22 +8,15 @@ use_ok('Machine::Epsilon');
 
 my $expected;
 
-# find out the bitness of the perl binary
-my $w = `which perl`;
-my $o = `file $w`;
+my %expected = (
+   4 => 2**-23,
+   8 => 2**-52,
+  16 => 2**-105
+);
 
-if ( $o =~ /ELF 32-bit/ ) {
-    $expected = 2**-23;
-}
-elsif ( $o =~ /ELF 64-bit/ ) {
-    $expected = 2**-52;
-}
-else {
-    die "Not on a 32-bit or 64-bit perl. $o";
-}
 
 my $got = machine_epsilon();
-is ($got, $expected, 'machine_epsilon()');
+is ($got, $expected{length(pack('d', 1.001))}, 'machine_epsilon()');
 
 done_testing();
 
