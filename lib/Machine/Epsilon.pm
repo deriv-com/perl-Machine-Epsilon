@@ -5,7 +5,7 @@ use Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT = qw(machine_epsilon);
 
-our $VERSION = '1.00';
+our $VERSION = '1.0.1';
 
 =head1 NAME
 
