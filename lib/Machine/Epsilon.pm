@@ -5,7 +5,7 @@ use Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT = qw(machine_epsilon);
 
-our $VERSION = '1.00';
+our $VERSION = '1.0.1';
 
 =head1 NAME
 
@@ -26,7 +26,19 @@ Version 1.00
 
 =cut
 
+=head1 FUNCTIONS
+
+=head2 machine_epsilon
+
+Returns the rounding error for the machine.
+
+=cut
+
+my $epsilon;
+
 sub machine_epsilon {
+
+    return $epsilon if $epsilon;
 
     # Machine accuracy for 32-bit floating point number
     my $ma_32bit_23mantissa = 1.0 / ( 2**23 );
@@ -35,7 +47,7 @@ sub machine_epsilon {
     my $ma_64bit_52mantissa = 1.0 / ( 2**52 );
 
     # Machine accuracy for 128-bit floating point number (e.g. IBM AIX)
-    my $ma_128bit_105mantissa = 1.0 / ( 2**105 );
+    my $ma_128bit_105mantissa = 1.0 / ( 2**112 );
 
     # Always start with a power of 2 to avoid roundoff errors!!
     my $e = 1.0;
@@ -61,6 +73,8 @@ sub machine_epsilon {
           . "Setting to minimum accuracy of $ma_32bit_23mantissa.";
         return $ma_32bit_23mantissa;
     }
+
+    $epsilon = $e;
 
     return $e;
 }
