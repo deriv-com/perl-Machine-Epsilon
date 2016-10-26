@@ -1,4 +1,7 @@
-Machine::Epsilon [![Build Status](https://travis-ci.org/binary-com/perl-Machine-Epsilon.svg?branch=master)](https://travis-ci.org/binary-com/perl-Machine-Epsilon) [![Coverage Status](https://coveralls.io/repos/binary-com/perl-Machine-Epsilon/badge.png?branch=master)](https://coveralls.io/r/binary-com/perl-Machine-Epsilon?branch=master)
+Machine::Epsilon 
+
+[![Build Status](https://travis-ci.org/binary-com/perl-Machine-Epsilon.svg?branch=master)](https://travis-ci.org/binary-com/perl-Machine-Epsilon)
+[![codecov](https://codecov.io/gh/binary-com/perl-Machine-Epsilon/branch/master/graph/badge.svg)](https://codecov.io/gh/binary-com/perl-Machine-Epsilon)
 
 Find the maximum relative error while rounding a floating point number
 
