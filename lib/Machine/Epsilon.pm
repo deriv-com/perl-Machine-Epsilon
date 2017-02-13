@@ -4,7 +4,7 @@ use warnings;
 
 use Exporter;
 our @ISA = qw(Exporter);
-our @EXPORT = qw(machine_epsilon);
+our @EXPORT = qw(machine_epsilon); ## no critic (ProhibitAutomaticExportation)
 
 our $VERSION = '1.0.1';
 
