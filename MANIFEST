@@ -1,6 +1,0 @@
-lib/Machine/Epsilon.pm
-Makefile.PL
-MANIFEST			This list of files
-MYMETA.json
-README.md
-t/machine_epsilon.t

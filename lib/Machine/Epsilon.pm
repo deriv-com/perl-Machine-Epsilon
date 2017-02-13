@@ -1,5 +1,6 @@
 package Machine::Epsilon;
-use strict; use warnings;
+use strict;
+use warnings;
 
 use Exporter;
 our @ISA = qw(Exporter);
@@ -10,12 +11,6 @@ our $VERSION = '1.0.1';
 =head1 NAME
 
 Machine::Epsilon - The maximum relative error while rounding a floating point number
-
-=head1 VERSION
-
-Version 1.00
-
-=cut
 
 =head1 SYNOPSIS
 
