@@ -3,10 +3,10 @@ use strict;
 use warnings;
 
 use Exporter;
-our @ISA = qw(Exporter);
-our @EXPORT = qw(machine_epsilon); ## no critic (ProhibitAutomaticExportation)
+our @ISA    = qw(Exporter);
+our @EXPORT = qw(machine_epsilon);    ## no critic (ProhibitAutomaticExportation)
 
-our $VERSION = '1.0.1';
+our $VERSION = '1.0.2';
 
 =head1 NAME
 
@@ -36,36 +36,36 @@ sub machine_epsilon {
     return $epsilon if $epsilon;
 
     # Machine accuracy for 32-bit floating point number
-    my $ma_32bit_23mantissa = 1.0 / ( 2**23 );
+    my $ma_32bit_23mantissa = 1.0 / (2**23);
 
     # Machine accuracy for 64-bit floating point number
-    my $ma_64bit_52mantissa = 1.0 / ( 2**52 );
+    my $ma_64bit_52mantissa = 1.0 / (2**52);
 
     # Machine accuracy for 128-bit floating point number (e.g. IBM AIX)
-    my $ma_128bit_105mantissa = 1.0 / ( 2**112 );
+    my $ma_128bit_105mantissa = 1.0 / (2**112);
 
     # Always start with a power of 2 to avoid roundoff errors!!
     my $e = 1.0;
     while (1) {
-        if ( 1.0 + $e / 2 == 1.0 ) { last; }
+        if (1.0 + $e / 2 == 1.0) { last; }
         $e = $e / 2.0;
 
         # Accuracy already better than a 128-bit machine!!
-        if ( $e < $ma_128bit_105mantissa ) {
+        if ($e < $ma_128bit_105mantissa) {
             warn "Machine accuracy seems too good to be true!! "
-              . "Do we have such a powerful machine? Assuming that "
-              . "something isn't right, and returning machine accuracy "
-              . "for 64 bit double.";
+                . "Do we have such a powerful machine? Assuming that "
+                . "something isn't right, and returning machine accuracy "
+                . "for 64 bit double.";
             $e = $ma_64bit_52mantissa;
             last;
         }
     }
 
     # If accuracy is very bad, we return the minimum accuracy for a 32-bit double
-    if ( $e > $ma_32bit_23mantissa ) {
+    if ($e > $ma_32bit_23mantissa) {
         warn "Machine accuracy ($e greater than $ma_32bit_23mantissa) "
-          . "seems worse than the primitive 32-bit double representation. "
-          . "Setting to minimum accuracy of $ma_32bit_23mantissa.";
+            . "seems worse than the primitive 32-bit double representation. "
+            . "Setting to minimum accuracy of $ma_32bit_23mantissa.";
         return $ma_32bit_23mantissa;
     }
 
@@ -131,5 +131,5 @@ See L<http://dev.perl.org/licenses/> for more information.
 
 =cut
 
-1; # End of Machine::Epsilon
+1;    # End of Machine::Epsilon
 
