@@ -37,7 +37,7 @@ jobs:
       - run:
           name: Run Tests
           command: |
-            dzil smoke --release --author && dzil cover -test && dzil xtest
+            dzil smoke --release --author && dzil cover -test -report codecov && dzil xtest
   release:
     docker:
       - image: perldocker/perl-tester:5.34
